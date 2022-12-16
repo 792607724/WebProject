@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{hello}}</h1>
+<h2>{{explain}}</h2>
+<p>{{view_list}}</p>
+<h1><p>{{view_list.0}}</p></h1>
+<h2>{{view_dict}}</h2>
+<h3>{{view_dict.name}}</h3>
+
+<h1>【过滤器】转换为大写：{{hello | upper}}</h1>
+<h2>【过滤器】第一个元素转换为大写：{{view_list}}</h2>
+<h1>【过滤器】显示前3个祠：{{hello |truncatewords:"3"}}</h1>
+<h1>【过滤器】增加默认值：{{cgtisthebest |default:"CGTISTHEBEST"}}</h1>
+<h1>【过滤器】返回显示数据的长度：{{hello |length}}</h1>
+<h1><a href={{link1}}>【过滤器】返回显示数据、文件的大小：{{num |filesizeformat}}</a></h1>
+<h1><a href={{link2}}>【过滤器】返回显示数据、文件的大小：{{num |filesizeformat}}</a></h1>
+
+</body>
+</html>
