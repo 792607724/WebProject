@@ -2,23 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Django模版测试</title>
 </head>
 <body>
-<h1>{{hello}}</h1>
-<h2>{{explain}}</h2>
-<p>{{view_list}}</p>
-<h1><p>{{view_list.0}}</p></h1>
-<h2>{{view_dict}}</h2>
-<h3>{{view_dict.name}}</h3>
+    <h6>{{hello}}</h6>
+    <h6>{{explain}}</h6>
+    <p>{{view_list}}</p>
+    <h6><p>{{view_list.0}}</p></h6>
+    <h6>{{view_dict}}</h6>
+    <h6>{{view_dict.name}}</h6>
 
-<h1>【过滤器】转换为大写：{{hello | upper}}</h1>
-<h2>【过滤器】第一个元素转换为大写：{{view_list}}</h2>
-<h1>【过滤器】显示前3个祠：{{hello |truncatewords:"3"}}</h1>
-<h1>【过滤器】增加默认值：{{cgtisthebest |default:"CGTISTHEBEST"}}</h1>
-<h1>【过滤器】返回显示数据的长度：{{hello |length}}</h1>
-<h1><a href={{link1}}>【过滤器】返回显示数据、文件的大小：{{num |filesizeformat}}</a></h1>
-<h1><a href={{link2}}>【过滤器】返回显示数据、文件的大小：{{num |filesizeformat}}</a></h1>
-
+    <h6>【过滤器】转换为大写：{{hello | upper}}</h6>
+    <h6>【过滤器】第一个元素转换为大写：{{view_list}}</h6>
+    <h6>【过滤器】显示前1个祠：{{hello |truncatewords:"1"}}</h6>
+    <h6>【过滤器】增加默认值：{{cgtisthebest |default:"CGTISTHEBEST"}}</h6>
+    <h6>【过滤器】返回显示数据的长度：{{hello |length}}</h6>
+    <h6><a href={{link1}}>【过滤器】返回显示数据、文件的大小：{{num |filesizeformat}}</a></h6>
+    <h6><a href={{link2}}>【过滤器】返回显示数据、文件的大小：{{num |filesizeformat}}</a></h6>
+    <h6>{{currentTime |date:"Y年m月d日"}}</h6>
+    <h6>【过滤器】显示前3个祠：{{displayWord |truncatechars:3}}</h6>
+    <h6>你那么爱他{{safeStr|safe}}</h6>
+    {%if num > 90 and num <= 100 %}
+    优秀
+    {%elif num > 60 and num <= 90 %}
+    合格
+    {%else%}
+    一边玩去～
+    {%endif%}
+    <br/><b>正向迭代:</b>
+    <ul>
+        {% for element in view_list %}
+            <li>{{element}}</li>
+        {% endfor %}
+    </ul>
+    <br/><b>反向迭代:</b>
+    <ul>
+        {% for element in view_list reversed %}
+            <li>{{element}}</li>
+        {% endfor %}
+    </ul>
+    <br/><b>遍历字典:</b>
+    <ul>
+        {% for i,j in view_dict.items %}
+        键 - {{i}} : 值 - {{j}}<br/>
+        {% endfor %}
+    </ul>
+    <br/><b>forloop多种获取方式:</b>
+    <ul>
+        {% for element in view_list %}
+            <li>{{forloop.counter}}</li>
+            ____________________________
+<!--            <li>{{forloop.counter0}}</li>-->
+<!--            ____________________________-->
+<!--            <li>{{forloop.revcounter}}</li>-->
+<!--            ____________________________-->
+<!--            <li>{{forloop.revcounter0}}</li>-->
+<!--            ____________________________-->
+<!--            <li>{{forloop.first}}</li>-->
+<!--            ____________________________-->
+<!--            <li>{{forloop.last}}</li>-->
+<!--            ____________________________-->
+        {% endfor %}
+    </ul>
 </body>
 </html>

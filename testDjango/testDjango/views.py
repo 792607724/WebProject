@@ -1,4 +1,5 @@
 # coding = utf8
+import datetime
 import os
 
 from django.http import HttpResponse
@@ -33,4 +34,7 @@ def runoob(request):
     context["num"] = 19073741824
     context["link1"] = "/index"
     context["link2"] = "http://www.baidu.com"
+    context["currentTime"] = datetime.datetime.now()
+    context["displayWord"] = "1234567890AB"
+    context["safeStr"] = "<a href='https://www.baidu.com'>Baidu</a>"
     return render(request, "runoob.html", context)
