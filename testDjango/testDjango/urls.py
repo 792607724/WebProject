@@ -27,4 +27,5 @@ urlpatterns = [
     re_path(r"^hello/$", views.hello, name="hello"),
     re_path(r"^index/$", views.index, name="index"),
     path("runoob/", views.runoob),
+    re_path(r"^base/$", views.base, name="base"),
 ]

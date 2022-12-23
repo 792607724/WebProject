@@ -20,6 +20,8 @@ def hello(request):
 def index(request):
     return HttpResponse("主页")
 
+def base(request):
+    return render(request, "base.html")
 
 def runoob(request):
     context = {}
@@ -37,4 +39,11 @@ def runoob(request):
     context["currentTime"] = datetime.datetime.now()
     context["displayWord"] = "1234567890AB"
     context["safeStr"] = "<a href='https://www.baidu.com'>Baidu</a>"
+    context["emptyList"] = []
+    athlete_list = [{"name": "CGT_1", "sports_played": ["soccer", "basketball", "table tennis"]},
+                    {"name": "CGT_2", "sports_played": ["soccer", "basketball", "table tennis"]},
+                    {"name": "CGT_3", "sports_played": ["soccer", "basketball", "table tennis"]},
+                    {"name": "CGT_4", "sports_played": ["soccer", "basketball", "table tennis"]},
+                    {"name": "CGT_5", "sports_played": ["soccer", "basketball", "table tennis"]}]
+    context["athlete_list"] = athlete_list
     return render(request, "runoob.html", context)

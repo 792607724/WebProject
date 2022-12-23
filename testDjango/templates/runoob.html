@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Django模版测试</title>
+    <link rel="stylesheet" href="/static/plugins/bootstrap-5.2.3/dist/css/bootstrap.css">
 </head>
+<br>模版继承:<br/>
+    {#{% extends "base.html" %}#}
+    {% block mainbody %}
+        <h6>base.html 文件</h6>
+    {% endblock %}
+{% load my_tags %}
+{% load static %}
 <body>
+
     <h6>{{hello}}</h6>
     <h6>{{explain}}</h6>
     <p>{{view_list}}</p>
@@ -64,5 +73,46 @@
 <!--            ____________________________-->
         {% endfor %}
     </ul>
+    <br/>
+    {% for i in emptyList %}
+       {{ forloop.counter0 }}
+    {% empty %}
+        空空如也～
+    {% endfor %}
+    <br/>
+    <h6>嵌套for循环</h6>
+    {% for athlete in athlete_list %}
+        <h6/>{{athlete.name}}</h6>
+        <ul>
+            {% for sport in athlete.sports_played %}
+                <li>{{sport}}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    <h6>ifequal/ifnotequal</h6>
+    {% ifequal displayWord "1234567890AB1" %}
+        <h6>两值相等</h6>
+    {% else %}
+        <h6>两值不相等</h6>
+    {% endifequal %}
+    {# 这是一个注释 #}
+    <br/>
+    <h6>---------------------------H6的include标签---------------------------</h6>
+    {% include "baidu.html" %}
+    <h6>---------------------------H6的include标签---------------------------</h6>
+    <h6>csrf_token用于form表单中，作用是跨站请求伪造保护</h6>
+    {% csrf_token %}
+    <br/>
+    <h6>自定义过滤器和标签</h6>
+    <br>过滤器:<br/>
+    11*22 = {{ 11|my_filter:22 }}
+    <br>标签:<br/>
+    11*22*33 = {% my_tag1 11 22 33 %}
+    <br>语义化自定义标签:<br/>
+    {% my_html "id_cgt" "class_cgt" %}
+    <br/>
+    <br/>
+    <img decoding="async" width="600px" height="300px" src="{% static 'images/car.png' %}" alt="runoob-logo">
+
 </body>
 </html>
